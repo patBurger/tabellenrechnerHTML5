@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sport1 Tabellenrechner</title>
+
+    <!-- CSS Style -->
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/reset.css">
+
+    <!-- ANGULAR JS -->
+    <!--script src="js/angular/angular.js"></script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+
+    <!--FOR AJAX / $RESOURCE, YOU NEED OTHER FILE "angular-resource[.min].js"-->
+    <script rel="script" src="https://code.angularjs.org/1.2.18/angular-resource.js" type="text/javascript"></script>
+
+    <!-- APPLICATIONS -->
+    <script rel="script" src="js/app.js" type="text/javascript"></script>
+
+    <!-- CONTROLLERS -->
+    <script rel="script" src="js/tableController.js" type="text/javascript"></script>
+    <script rel="script" src="js/scheduleController.js" type="text/javascript"></script>
+
+    <!-- SERVICES -->
+    <script rel="script" src="js/services.js" type="text/javascript"></script>
+</head>
+<body ng-app="table">
+    <div ng-controller="TableController">
+        <table class="standings">
+            <tr>
+                <th><a href="" ng-click="reverse=!reverse;orderBy(['points', 'goalDifference', 'goalScoredFor', 'goalScoredAgainst'], reverse)">Pos</a></th>
+                <th colspan="2"><a href="" ng-click="reverse=!reverse;orderBy('team.medium', reverse)">Team</a></th>
+                <th><a href="" ng-click="reverse=!reverse;orderBy('gamesCount',reverse)">Spiele</a></th>
+                <th><a href="" ng-click="reverse=!reverse;orderBy('wins',reverse)">Siege</a></th>
+                <th><a href="" ng-click="reverse=!reverse;orderBy('ties',reverse)">Unentschieden</a></th>
+                <th><a href="" ng-click="reverse=!reverse;orderBy('losses',reverse)">Niederlagen</a></th>
+                <th><a href="" ng-click="reverse=!reverse;orderBy('goalDifference',reverse)">Tordifferenz</a></th>
+                <th><a href="" ng-click="reverse=!reverse;orderBy('goalScoredFor',reverse)">Tore</a></th>
+                <th><a href="" ng-click="reverse=!reverse;orderBy('goalScoredAgainst',reverse)">Gegentore</a></th>
+                <th><a href="" ng-click="reverse=!reverse;orderBy('points',reverse)">Punkte</a></th>
+            </tr>
+            <tr ng-repeat="team in standings">
+                <td>{{$index + 1}}</td>
+                <td><img class="teamLogo" src="{{team.team.logo}}"></td>
+                <td>{{team.team.medium}}</td>
+                <td>{{team.gamesCount}}</td>
+                <td>{{team.wins}}</td>
+                <td>{{team.ties}}</td>
+                <td>{{team.losses}}</td>
+                <td>{{team.goalDifference}}</td>
+                <td>{{team.goalScoredFor}}</td>
+                <td>{{team.goalScoredAgainst}}</td>
+                <td>{{team.points}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
